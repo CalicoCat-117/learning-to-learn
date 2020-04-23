@@ -27,7 +27,8 @@ from tensorflow.contrib.learn.python.learn import monitored_session as ms
 
 import meta
 import util
-
+gpu_options = tf.GPUOptions(allow_growth=True)
+sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))  
 flags = tf.flags
 logging = tf.logging
 
