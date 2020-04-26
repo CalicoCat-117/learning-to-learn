@@ -30,7 +30,7 @@ from tensorflow.python.framework import ops
 from tensorflow.python.util import nest
 
 import networks
-
+import pdb
 
 def _nested_assign(ref, value):
   """Returns a nested collection of TensorFlow assign operations.
@@ -175,7 +175,7 @@ def _make_nets(variables, config, net_assignments):
   # list of variables.
   name_to_index = dict((v.name.split(":")[0], i)
                        for i, v in enumerate(variables))
-
+  
   if net_assignments is None:
     if len(config) != 1:
       raise ValueError("Default net_assignments can only be used if there is "
@@ -306,7 +306,7 @@ class MetaOptimizer(object):
       """Parameter and RNN state update."""
       with tf.name_scope("gradients"):
         gradients = tf.gradients(fx, x)
-
+        
         # Stopping the gradient here corresponds to what was done in the
         # original L2L NIPS submission. However it looks like things like
         # BatchNorm, etc. don't support second-derivatives so we still need
